@@ -1,8 +1,9 @@
 import http from 'http';
+import dotenv from 'dotenv';
+dotenv.config();
 
-
-const hostname= '127.0.0.1';
-const port =3000;
+const hostname=process.env.HOSTNAME;
+const port =process.env.PORT;
 const server = http.createServer((req,res)=>{
     res.writeHead(200,{'Content-Type':'application/json'});
     res.write(JSON.stringify({message:"Server successfully created"}));
@@ -11,5 +12,5 @@ const server = http.createServer((req,res)=>{
 
 
 server.listen(port,hostname,()=>{
-    console.log(`The server is listening at port ${port}`);
+    console.log(`The server is listening at port ${port} `);
 })

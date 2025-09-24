@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/MukeshMW11/node_advanced#readme",
   "devDependencies": {
+    "autocannon": "^8.0.0",
     "nodemon": "^3.1.10"
   },
   "dependencies": {

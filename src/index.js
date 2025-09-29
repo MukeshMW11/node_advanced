@@ -1,6 +1,6 @@
 import http from 'http';
 import dotenv from 'dotenv';
-import { ollamaPool, streamOllamaCompletion } from './utils/fetch.utils.js';
+import { fetchGithubRepos} from './utils/fetch.utils.js';
 dotenv.config();
 
 const hostname=process.env.HOSTNAME;
@@ -10,7 +10,8 @@ const server = http.createServer(async (req,res)=>{
 if(req.method === 'GET'){
     try{
 
-        const data  =await streamOllamaCompletion('What is recursion') ;
+        // const data  =await streamOllamaCompletion('What is recursion in very short no more than 2 lines ??') ;
+        const data  =await fetchGithubRepos();
         res.writeHead(200,{'Content-Type':'application/json'});
         res.write(JSON.stringify({message:data}));
         res.end();

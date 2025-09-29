@@ -24,6 +24,8 @@
     "nodemon": "^3.1.10"
   },
   "dependencies": {
-    "dotenv": "^17.2.2"
+    "dotenv": "^17.2.2",
+    "ollama": "^0.6.0",
+    "undici": "^7.16.0"
   }
 }

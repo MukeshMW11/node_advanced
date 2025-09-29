@@ -1,15 +1,25 @@
 import http from 'http';
 import dotenv from 'dotenv';
+import { ollamaPool, streamOllamaCompletion } from './utils/fetch.utils.js';
 dotenv.config();
 
 const hostname=process.env.HOSTNAME;
 const port =process.env.PORT;
-const server = http.createServer((req,res)=>{
+const server = http.createServer(async (req,res)=>{
     
 if(req.method === 'GET'){
-    res.writeHead(200,{'Content-Type':'application/json'});
-    res.write(JSON.stringify({message:"This is the get request."}));
-    res.end();
+    try{
+
+        const data  =await streamOllamaCompletion('What is recursion') ;
+        res.writeHead(200,{'Content-Type':'application/json'});
+        res.write(JSON.stringify({message:data}));
+        res.end();
+        ollamaPool.close();
+    }
+    catch(err){
+        res.writeHead(404,{"Content-Type":"application/json"});
+        res.end(JSON.stringify({"message":`Error fetching the data ${err}`}))
+    }
 
 }
 else{
@@ -26,5 +36,7 @@ else{
 
 server.listen(port,hostname,()=>{
     console.log(`The server is listening at port ${port}`);
-    console.log(WebAssembly);
+    // console.log(WebAssembly);
 })
+
+

@@ -20,6 +20,7 @@ if(req.method === 'GET'){
     catch(err){
         res.writeHead(404,{"Content-Type":"application/json"});
         res.end(JSON.stringify({"message":`Error fetching the data ${err}`}))
+        throw new Error('There was ana error getting the request');
     }
 
 }

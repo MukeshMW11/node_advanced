@@ -19,6 +19,12 @@
     "url": "https://github.com/MukeshMW11/node_advanced/issues"
   },
   "homepage": "https://github.com/MukeshMW11/node_advanced#readme",
+      "private":true,
+"workspaces":[
+ "src/apps/*",
+ "src/libraries*"
+  ],
+  
   "devDependencies": {
     "autocannon": "^8.0.0",
     "nodemon": "^3.1.10"
@@ -28,4 +34,5 @@
     "ollama": "^0.6.0",
     "undici": "^7.16.0"
   }
+
 }

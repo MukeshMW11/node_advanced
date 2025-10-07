@@ -17,7 +17,7 @@
 
 
 class AppError extends Error{
-    constructor(name,httpCode,description,isOperational){
+    constructor(name,httpCode,description,isOperational=true){
         super(description);
         if(Error.captureStackTrace){
             Error.captureStackTrace(this,this.constructor);

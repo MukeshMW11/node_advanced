@@ -4,8 +4,8 @@ import { commonErrors, commonHTTPErrors } from './libraries/constants/constant.j
 import { fetchGithubRepos } from './libraries/utils/fetch.utils.js';
 import AppError from './libraries/errorHandler/Apperror.js';
 import { getById } from './apps/users/entry-points/controllers/users.controller.js';
+import { createLogger } from './libraries/logger/src/logger.js';
 dotenv.config();
-
 const hostname=process.env.HOSTNAME;
 const port =process.env.PORT;
 const server = http.createServer(async (req,res)=>{

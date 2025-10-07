@@ -1,6 +1,6 @@
-import { Pool } from "undici";
-import { config } from "dotenv";
-config();
+// import { Pool } from "undici";
+// import { config } from "dotenv";
+// config(); 
 // const pool  =  new Pool('https://jsonplaceholder.typicode.com',{
 //     connections:5,
 //     pipelining:1
@@ -81,6 +81,9 @@ config();
 
 import { Writable } from "stream";
 import { stream } from "undici";
+
+
+
 export const fetchGithubRepos = async () => {
     let repoNames = [];
   const url = "https://api.github.com/users/nodejs/repos";
@@ -119,6 +122,5 @@ export const fetchGithubRepos = async () => {
     }
   );
 
-  console.log(statusCode);
   return repoNames;
 };

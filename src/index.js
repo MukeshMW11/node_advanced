@@ -1,6 +1,8 @@
 import http from 'http';
 import dotenv from 'dotenv';
-import { fetchGithubRepos} from './utils/fetch.utils.js';
+import AppError from './libraries/errorHandler/Apperror.js';
+import { commonErrors, commonHTTPErrors } from './libraries/constants/constant.js';
+import { fetchGithubRepos } from './libraries/utils/fetch.utils.js';
 dotenv.config();
 
 const hostname=process.env.HOSTNAME;
@@ -15,12 +17,12 @@ if(req.method === 'GET'){
         res.writeHead(200,{'Content-Type':'application/json'});
         res.write(JSON.stringify({message:data}));
         res.end();
-        ollamaPool.close();
+        // ollamaPool.close();
     }
     catch(err){
         res.writeHead(404,{"Content-Type":"application/json"});
         res.end(JSON.stringify({"message":`Error fetching the data ${err}`}))
-        throw new Error('There was ana error getting the request');
+        throw new AppError(commonErrors.resourceNotFound,commonHTTPErrors.notFound,err.message,true);
     }
 
 }
